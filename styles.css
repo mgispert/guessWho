@@ -1,19 +1,36 @@
 .character {
-  width: 300px;
-  height: 350px;
+  width: 200px;
+  height: 235px;
   border: solid black 2px;
   position: relative;
+  min-width: 200px;
+  background-color: #cbeaff91;
 }
+
 /* Beginning of head */
 .head {
   width: 100px;
-  height: 100px;
+  height: 90px;
   background-color: rgb(247, 223, 178);
   position: absolute;
   left: 0;
   right: 0;
-  top: 45px;
+  top: 29px;
   margin: 0 auto;
+}
+
+.female .head:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border: 20px solid #b876768c;
+  border-top: none;
+  border-bottom: none;
+  top: 56px;
+  height: 6px;
+  width: 38px;
 }
 
 .hair {
@@ -25,11 +42,61 @@
   height: 16px;
 }
 
+.female .hair {
+  height: 90px;
+  z-index: 1;
+  width: 70px;
+  right: -2px;
+  top: 0px;
+  border-top-width: 23px;
+}
+
+.female .hair:before {
+  content: "";
+  border-right-style: solid;
+  border-right-width: 20px;
+  border-bottom-style: solid;
+  border-bottom-width: 38px;
+  position: absolute;
+  top: -27px;
+  z-index: 0;
+  height: 10px;
+  left: 1px;
+  transform: rotate(61deg);
+}
+
+.female .hair:after {
+  content: "";
+  border-right-style: solid;
+  border-right-width: 25px;
+  border-bottom-style: solid;
+  border-bottom-width: 30px;
+  position: absolute;
+  top: -40px;
+  z-index: 0;
+  height: 0px;
+  left: 55px;
+}
+
 .black {
   border-color: black;
 }
-.blonde {
-  border-color: rgb(209, 209, 120);
+.blonde,
+.female .blonde.hair:before,
+.female .blonde.hair:after {
+  border-color: rgb(255 255 207);
+}
+
+.brunette,
+.female .brunette.hair:before,
+.female .brunette.hair:after {
+  border-color: #441e02;
+}
+
+.ginger,
+.female .ginger.hair:before,
+.female .ginger.hair:after {
+  border-color: #e99153;
 }
 
 .eyes {
@@ -44,6 +111,11 @@
   width: 25px;
   height: 15px;
   position: absolute;
+  border-top: 2px solid #8b640b;
+}
+
+.female .eye {
+  border-bottom: 1px black solid;
 }
 
 .eye.left {
@@ -71,6 +143,10 @@
 
 .iris.blue {
   background-color: #b0ffff;
+}
+
+.iris.green {
+  background-color: #28f032;
 }
 
 .pupil {
@@ -124,7 +200,7 @@
   position: absolute;
   width: 35px;
   height: 21px;
-  bottom: 8px;
+  bottom: 4px;
   background-color: #b87676;
   left: 0;
   right: 0;
@@ -163,51 +239,43 @@
   right: 0;
   margin: 0 auto;
   bottom: 0;
-  width: 150px;
-  height: 204px;
+  width: 85px;
+  height: 115px;
   background-color: rgb(88, 165, 189);
 }
-
-.arm.left {
+.arm {
   position: absolute;
-  left: -33px;
   top: 3px;
   background-color: #58a5bd;
-  width: 40px;
-  height: 120px;
+  width: 30px;
+  height: 70px;
+}
+.arm.left {
+  left: -20px;
   transform: rotate(30deg);
 }
 
 .arm.right {
-  position: absolute;
-  right: -33px;
-  top: 3px;
-  background-color: #58a5bd;
-  width: 40px;
-  height: 120px;
+  right: -20px;
   transform: rotate(150deg);
 }
 
-.left .hand {
+.hand {
   position: absolute;
   background-color: #f7dfb2;
-  width: 30px;
-  height: 20px;
-  bottom: -20px;
+  width: 20px;
+  height: 10px;
   left: 0;
   right: 0;
   margin: 0 auto;
 }
 
+.left .hand {
+  bottom: -10px;
+}
+
 .right .hand {
-  position: absolute;
-  background-color: #f7dfb2;
-  width: 30px;
-  height: 20px;
-  top: -20px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  top: -10px;
 }
 
 /* End of body */
