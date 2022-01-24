@@ -1,14 +1,39 @@
-const FEMALE_NAMES = ["Elle", "Nadia", "Pasiphae"];
-const MALE_NAMES = ["Logan", "Neil", "Pau"];
+const FEMALE_NAMES = [
+  "Elle",
+  "Nadia",
+  "Pasiphae",
+  "Khione",
+  "Clarisse",
+  "Sekhmet",
+  "Lethe",
+  "Niobe",
+  "Em",
+  "Alex",
+  "Sam",
+  "Isis",
+];
+const MALE_NAMES = [
+  "Logan",
+  "Neil",
+  "Pau",
+  "Percy",
+  "James",
+  "William",
+  "Wilde",
+  "Charlie",
+  "Nathan",
+  "Cam",
+  "Carter",
+  "Hugh",
+];
 const GENDERS = ["male", "female"];
-const HAIR_COLOUR = ["blonde", "brunette", "ginger"];
-const EYE_COLOUR = ["blue", "green"];
+const HAIR_COLOUR = ["blonde", "brunette", "ginger", "green", "blue", "pink"];
+const EYE_COLOUR = ["blue", "green", "brown", "gray"];
 const CATEGORIES = [
   "gender",
   "hairColour",
   "hasBeard",
   "hasGlasses",
-  "name",
   "eyeColour",
 ];
 const QUESTIONS_BY_CATEGORY = {
@@ -17,14 +42,32 @@ const QUESTIONS_BY_CATEGORY = {
     female: "Are they female?",
   },
   hairColour: {
-    blonde: "Are they blonde?",
-    brunette: "Are they brunette?",
-    ginger: "Are they ginger?",
+    blonde: "Do they have blonde hair?",
+    brunette: "Do they have brunette hair?",
+    ginger: "Do they have ginger hair?",
+    green: "Do they have green hair?",
+    blue: "Do they have blue hair?",
+    pink: "Do they have pink hair?",
+  },
+  eyeColour: {
+    blue: "Do they have blue eyes?",
+    green: "Do they have green eyes?",
+    brown: "Do they have brown eyes?",
+    gray: "Do they have gray eyes?",
+  },
+  hasBeard: {
+    hasBeard: "Do they have a beard?",
+    noBeard: "don't they have a bear?",
+  },
+
+  hasGlasses: {
+    true: "Do they wear glasses?",
+    false: "Don't they wear classes?",
   },
 };
 
 class Game {
-  constructor(numOfCharacters = 10) {
+  constructor(numOfCharacters = 24) {
     this.numOfCharacters = numOfCharacters;
     this.listOfCharacters = [];
     this.botSelectedCharacter = null;
@@ -52,13 +95,15 @@ class Game {
     const charactersElement = document.getElementById("characters");
     charactersElement.innerHTML = "";
     this.listOfCharacters.forEach((character) => {
-      // const characterElement = document.createElement("button");
-      // characterElement.innerText = `${JSON.stringify(character)}`;
       const characterElement = this.drawCharacter(character);
-      if (character.noMatch) characterElement.disabled = true;
 
+      const isCharacterAMatch = !character.noMatch;
+
+      !isCharacterAMatch && characterElement.classList.add("disabled");
       characterElement.addEventListener("click", () => {
-        this.selectCharacterByUser(character.id);
+        if (isCharacterAMatch) {
+          this.selectCharacterByUser(character.id);
+        }
       });
 
       charactersElement.appendChild(characterElement);
@@ -77,6 +122,10 @@ class Game {
     const hairElement = document.createElement("div");
     hairElement.classList.add("hair", character.hairColour);
     headElement.appendChild(hairElement);
+
+    const glassesElement = document.createElement("div");
+    glassesElement.classList.add(character.hasGlasses && "glasses");
+    headElement.appendChild(glassesElement);
 
     const eyesElement = document.createElement("div");
     eyesElement.classList.add("eyes");
@@ -109,6 +158,10 @@ class Game {
     const noseElement = document.createElement("div");
     noseElement.classList.add("nose");
     headElement.appendChild(noseElement);
+
+    const beardElement = document.createElement("div");
+    beardElement.classList.add(character.hasBeard && "beard");
+    headElement.appendChild(beardElement);
 
     const mouthElement = document.createElement("div");
     mouthElement.classList.add("mouth");
@@ -154,12 +207,20 @@ class Game {
     }
   }
 
-  filterCharacters(category) {
+  filterCharacters(category, questionValue) {
     this.listOfCharacters = this.listOfCharacters.map((character) => {
-      if (character[category] === this.botSelectedCharacter[category]) {
-        return character;
+      const characterMatchesQuestion = character[category] === questionValue;
+      const botMatchesQuestion =
+        this.botSelectedCharacter[category] === questionValue;
+
+      if (botMatchesQuestion) {
+        return characterMatchesQuestion
+          ? character
+          : { ...character, noMatch: true };
       } else {
-        return { ...character, noMatch: true };
+        return !characterMatchesQuestion
+          ? character
+          : { ...character, noMatch: true };
       }
     });
     this.displayCharacters();
