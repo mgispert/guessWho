@@ -1,0 +1,73 @@
+.eyes {
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  top: 36px;
+}
+
+.eye {
+  background-color: white;
+  width: 25px;
+  height: 15px;
+  position: absolute;
+  border-top: 2px solid #8b640b;
+}
+
+.female .eye {
+  border-bottom: 1px black solid;
+}
+
+.eye.left {
+  left: 17px;
+}
+
+.eye.right {
+  right: 17px;
+}
+
+.iris {
+  position: absolute;
+  height: 11px;
+  width: 10px;
+  bottom: 0;
+}
+
+.left .iris {
+  right: 4px;
+}
+
+.right .iris {
+  left: 4px;
+}
+
+.iris.blue {
+  background-color: #b0ffff;
+}
+
+.iris.green {
+  background-color: #28f032;
+}
+
+.iris.brown {
+  background-color: rgb(128, 54, 5);
+}
+
+.iris.gray {
+  background-color: rgb(129, 126, 126);
+}
+
+.pupil {
+  position: absolute;
+  bottom: 0;
+  height: 7px;
+  width: 6px;
+  background-color: black;
+}
+
+.right .pupil {
+  left: 1px;
+}
+
+.left .pupil {
+  right: 1px;
+}
