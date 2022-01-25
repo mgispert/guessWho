@@ -1,31 +1,31 @@
-const FEMALE_NAMES = [
-  "Elle",
-  "Nadia",
-  "Pasiphae",
-  "Khione",
-  "Clarisse",
-  "Sekhmet",
-  "Lethe",
-  "Niobe",
-  "Em",
-  "Alex",
-  "Sam",
-  "Isis",
-];
-const MALE_NAMES = [
-  "Logan",
-  "Neil",
-  "Pau",
-  "Percy",
-  "James",
-  "William",
-  "Wilde",
-  "Charlie",
-  "Nathan",
-  "Cam",
-  "Carter",
-  "Hugh",
-];
+// const FEMALE_NAMES = [
+//   "Elle",
+//   "Nadia",
+//   "Pasiphae",
+//   "Khione",
+//   "Clarisse",
+//   "Sekhmet",
+//   "Lethe",
+//   "Niobe",
+//   "Em",
+//   "Alex",
+//   "Sam",
+//   "Isis",
+// ];
+// const MALE_NAMES = [
+//   "Logan",
+//   "Neil",
+//   "Pau",
+//   "Percy",
+//   "James",
+//   "William",
+//   "Wilde",
+//   "Charlie",
+//   "Nathan",
+//   "Cam",
+//   "Carter",
+//   "Hugh",
+// ];
 const GENDERS = ["male", "female"];
 const HAIR_COLOUR = ["blonde", "brunette", "ginger", "green", "blue", "pink"];
 const EYE_COLOUR = ["blue", "green", "brown", "gray"];

@@ -5,6 +5,17 @@ class Game {
     this.botSelectedCharacter = null;
   }
 
+  setupIntro() {
+    const introElement = document.getElementById("intro");
+    const startButtonElement = document.createElement("button");
+    startButtonElement.innerText = "START";
+    startButtonElement.addEventListener("click", () => {
+      this.start();
+      introElement.remove();
+    });
+    introElement.appendChild(startButtonElement);
+  }
+
   start() {
     this.setupBoard();
     this.selectCharacterByBot();
@@ -13,6 +24,21 @@ class Game {
   }
 
   setupBoard() {
+    const bodyElement = document.querySelector("body");
+
+    const boardElement = document.createElement("div");
+    boardElement.id = "board";
+    bodyElement.appendChild(boardElement);
+    const categoriesElement = document.createElement("div");
+    categoriesElement.id = "categories";
+    boardElement.appendChild(categoriesElement);
+    const questionsElement = document.createElement("div");
+    questionsElement.id = "questions";
+    boardElement.appendChild(questionsElement);
+    const charactersElement = document.createElement("div");
+    charactersElement.id = "characters";
+    bodyElement.appendChild(charactersElement);
+
     this.createCharacters();
     this.displayCharacters();
   }
@@ -70,6 +96,7 @@ class Game {
       questionElement.innerText = question;
       questionElement.addEventListener("click", () => {
         this.filterCharacters(category, key);
+        questionElement.remove();
       });
       questionsElement.appendChild(questionElement);
     }
@@ -99,4 +126,4 @@ class Game {
 }
 
 const game = new Game(24);
-game.start();
+game.setupIntro();

@@ -4,16 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./head.css" />
     <link rel="stylesheet" href="./eyes.css" />
     <title>Guess Who</title>
   </head>
   <body>
-    <div id="categories">
-      <div id="questions"></div>
+    <div id="intro">
+      <div class="instructions">
+        <h1>INSTRUCTIONS:</h1>
+        <ul>
+          <li>
+            1. The bot chooses a random character. You
+            <u>don't</u> know who it is.
+          </li>
+          <li>
+            2. Click on <u>one</u> of the categories shown at the <u>top</u> of
+            your screen.
+          </li>
+          <li>
+            3. Once you choose a question to ask, the characters in your board
+            that don't match the bot's choice will turn <u>gray</u>.
+          </li>
+          <li>
+            4. Keep asking questions until you feel ready to guess who the bot's
+            character is.
+          </li>
+          <li>5. Enjoy!</li>
+        </ul>
+      </div>
     </div>
-    <div id="characters"></div>
+
     <script type="text/javascript" src="./data.js"></script>
     <script type="text/javascript" src="./character.js"></script>
     <script type="text/javascript" src="./game.js"></script>

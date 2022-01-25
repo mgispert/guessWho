@@ -3,15 +3,15 @@ class Character {
     const genderRandomIndex = this.randomIndex(GENDERS.length - 1);
     const gender = GENDERS[genderRandomIndex];
     const isMale = gender === "male";
-    const name = isMale ? MALE_NAMES : FEMALE_NAMES;
-    const nameRandomIndex = this.randomIndex(name.length - 1);
+    // const name = isMale ? MALE_NAMES : FEMALE_NAMES;
+    // const nameRandomIndex = this.randomIndex(name.length - 1);
     const hairColourRandomIndex = this.randomIndex(HAIR_COLOUR.length - 1);
     const eyeColourRandomIndex = this.randomIndex(EYE_COLOUR.length - 1);
     const eyeColour = EYE_COLOUR[eyeColourRandomIndex];
 
     return {
       gender: gender,
-      name: name[nameRandomIndex],
+      // name: name[nameRandomIndex],
       hairColour: HAIR_COLOUR[hairColourRandomIndex],
       hasGlasses: this.randomBoolean(),
       hasBeard: isMale ? this.randomBoolean() : false,
@@ -84,6 +84,9 @@ class Character {
 
     const mouthElement = this.createElement("div", ["mouth"]);
     headElement.appendChild(mouthElement);
+
+    // const nameElement = this.createElement("div", ["name"]);
+    // nameElement.appendChild(nameElement);
 
     return characterElement;
   }
