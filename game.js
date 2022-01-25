@@ -16,6 +16,11 @@ class Game {
     introElement.appendChild(startButtonElement);
   }
 
+  restart() {
+    this.listOfCharacters = [];
+    this.start();
+  }
+
   start() {
     this.setupBoard();
     this.selectCharacterByBot();
@@ -73,7 +78,11 @@ class Game {
 
   selectCharacterByUser(id) {
     console.log(id === this.botSelectedCharacter.id);
-    return id === this.botSelectedCharacter.id;
+    if (id === this.botSelectedCharacter.id) {
+      this.victory();
+    } else {
+      this.loss();
+    }
   }
 
   displayCategories() {
@@ -122,6 +131,44 @@ class Game {
       }
     });
     this.displayCharacters();
+  }
+
+  victory() {
+    document.querySelector("#board").remove();
+    document.querySelector("#characters").remove();
+    const bodyElement = document.querySelector("body");
+
+    const victoryElement = document.createElement("div");
+    victoryElement.id = "victory";
+    victoryElement.innerHTML = "YOU WON!";
+    bodyElement.appendChild(victoryElement);
+
+    const startButtonElement = document.createElement("button");
+    startButtonElement.innerText = "PLAY AGAIN";
+    startButtonElement.addEventListener("click", () => {
+      this.restart();
+      victoryElement.remove();
+    });
+    victoryElement.appendChild(startButtonElement);
+  }
+
+  loss() {
+    document.querySelector("#board").remove();
+    document.querySelector("#characters").remove();
+    const bodyElement = document.querySelector("body");
+
+    const lossElement = document.createElement("div");
+    lossElement.id = "loss";
+    lossElement.innerHTML = "OH NO, YOU LOST!";
+    bodyElement.appendChild(lossElement);
+
+    const startButtonElement = document.createElement("button");
+    startButtonElement.innerText = "PLAY AGAIN";
+    startButtonElement.addEventListener("click", () => {
+      this.restart();
+      lossElement.remove();
+    });
+    lossElement.appendChild(startButtonElement);
   }
 }
 

@@ -4,6 +4,7 @@ body {
   flex-direction: column;
   row-gap: 20px;
   min-width: 300px;
+  height: 100vh;
 }
 
 button {
@@ -22,7 +23,7 @@ button {
 
 #intro {
   background-color: #9e93f7;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,6 +109,27 @@ ul {
   cursor: pointer;
 }
 
+#victory,
+#loss {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poiret One";
+  font-size: 3rem;
+}
+
+#victory {
+  background-color: rgb(120, 247, 120);
+}
+
+#loss {
+  background-color: rgb(255, 117, 117);
+}
+
 @keyframes characterBackground {
   0% {
     background-color: pink;
@@ -125,7 +147,7 @@ ul {
 }
 
 .character:hover {
-  animation: characterBackground 1.5s infinite;
+  animation: characterBackground 1.5s;
 }
 
 .character:hover .mouth {
