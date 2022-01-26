@@ -65,6 +65,7 @@ ul {
 
 #preview-characters {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -194,6 +195,10 @@ ul {
 @media screen and (min-width: 648px) {
   #characters {
     grid-template-columns: repeat(3, 150px);
+  }
+
+  #preview-characters {
+    flex-direction: row;
   }
 
   .instructions h1 {
