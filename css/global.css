@@ -157,7 +157,7 @@ ul {
 }
 
 .character:hover {
-  animation: characterBackground 1.5s;
+  animation: characterBackground 1.5s infinite;
 }
 
 .character:hover .mouth {
