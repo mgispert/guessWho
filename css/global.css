@@ -14,7 +14,7 @@ button {
   border-radius: 5px;
   border-color: #9bfda0;
   padding: 15px;
-  font-family: "Poiret One";
+  font-family: 'Poiret One';
   font-size: 20px;
   font-weight: bold;
   box-shadow: 5px 5px 5px #9e93f7;
@@ -34,7 +34,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  font-family: "Poiret One";
+  font-family: 'Poiret One';
 }
 
 .instructions h1 {
@@ -54,6 +54,14 @@ ul {
   filter: grayscale();
 }
 
+.character.found {
+  background-color: #6dff6d;
+  cursor: not-allowed;
+}
+
+.character:hover.found,
+.character:hover.found .head,
+.character:hover.found .mouth,
 .character:hover.disabled,
 .character:hover.disabled .head,
 .character:hover.disabled .mouth {
@@ -70,20 +78,6 @@ ul {
   gap: 50px;
   flex-wrap: wrap;
   box-shadow: 5px 5px 5px 5px pink;
-}
-
-#board {
-  display: flex;
-  flex-direction: column;
-}
-
-#questions {
-  align-self: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
 }
 
 #characters {
@@ -118,7 +112,7 @@ ul {
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  font-family: "Poiret One";
+  font-family: 'Poiret One';
   font-size: 3rem;
 }
 
