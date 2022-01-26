@@ -17,6 +17,7 @@ class Game {
     this.numAttemptsCount = 0;
     this.gameCountdownInterval = null;
     this.bodyElement = document.querySelector("body");
+    this.previewElement = document.getElementById("preview");
   }
 
   setup() {
@@ -53,9 +54,7 @@ class Game {
 
   removePreview() {
     const previewElement = document.getElementById("preview");
-    const countdownElement = document.getElementById("preview-countdown");
     previewElement?.remove();
-    countdownElement?.remove();
   }
 
   removeBoard() {
@@ -67,20 +66,24 @@ class Game {
 
   showPreviewCharactersByBot() {
     const previewElement = document.createElement("div");
+    const charactersPreviewElement = document.createElement("div");
+    charactersPreviewElement.id = "preview-characters";
     previewElement.id = "preview";
     this.bodyElement.appendChild(previewElement);
 
     this.botSelectedCharacters.forEach((character) => {
       const characterElement = new Character().drawCharacter(character);
-      previewElement.appendChild(characterElement);
+      charactersPreviewElement.appendChild(characterElement);
     });
+    previewElement.appendChild(charactersPreviewElement);
   }
 
   showPreviewCountdown() {
+    const previewElement = document.getElementById("preview");
     const countdownElement = document.createElement("div");
     countdownElement.id = "preview-countdown";
     countdownElement.innerHTML = this.previewCountdownSeconds;
-    this.bodyElement.appendChild(countdownElement);
+    previewElement.appendChild(countdownElement);
     const countdown = setInterval(() => {
       if (this.previewCountdownSeconds <= 0) {
         clearInterval(countdown);
@@ -100,6 +103,7 @@ class Game {
     this.bodyElement.appendChild(countdownElement);
     this.gameCountdownInterval = setInterval(() => {
       if (this.gameCountdownSeconds <= 0) {
+        clearInterval(this.gameCountdownInterval);
         this.loss();
       } else {
         countdownElement.innerHTML = this.gameCountdownSeconds;
@@ -205,6 +209,7 @@ class Game {
   }
 
   victory() {
+    clearInterval(this.gameCountdownInterval);
     this.showResult("victory", "YOU WON!");
   }
 

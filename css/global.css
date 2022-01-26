@@ -1,13 +1,14 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  row-gap: 20px;
-  align-items: center;
+  padding: 0;
   min-width: 300px;
-  height: 100vh;
-  background-color: rgb(255 192 203);
 }
 
 button {
@@ -55,14 +56,35 @@ ul {
 
 #preview {
   display: flex;
-  gap: 25px;
-  margin-top: 5rem;
+  flex-direction: column;
+  justify-content: center;
+  background: pink;
+  height: 100%;
+  align-items: center;
 }
 
-#preview-countdown,
-#game-countdown {
+#preview-characters {
+  display: flex;
+  gap: 20px;
+}
+
+#preview-countdown {
   font-size: 8rem;
+  margin-top: 2rem;
   font-family: "Poiret One";
+}
+
+#game-countdown {
+  font-family: "Poiret One";
+  position: fixed;
+  height: 56px;
+  top: 0;
+  font-size: 3rem;
+  color: black;
+  background: #f1a8dba6;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
 }
 
 .character.disabled {
@@ -101,6 +123,7 @@ ul {
   grid-gap: 20px;
   grid-template-columns: repeat(2, 150px);
   justify-content: center;
+  margin-top: 76px;
 }
 
 .character {
