@@ -2,9 +2,12 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   row-gap: 20px;
+  align-items: center;
   min-width: 300px;
   height: 100vh;
+  background-color: rgb(255 192 203);
 }
 
 button {
@@ -14,7 +17,7 @@ button {
   border-radius: 5px;
   border-color: #9bfda0;
   padding: 15px;
-  font-family: 'Poiret One';
+  font-family: "Poiret One";
   font-size: 20px;
   font-weight: bold;
   box-shadow: 5px 5px 5px #9e93f7;
@@ -24,6 +27,7 @@ button {
 #intro {
   background-color: #9e93f7;
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +38,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  font-family: 'Poiret One';
+  font-family: "Poiret One";
 }
 
 .instructions h1 {
@@ -47,6 +51,18 @@ ul {
   list-style: none;
   line-height: 2rem;
   font-size: 2rem;
+}
+
+#preview {
+  display: flex;
+  gap: 25px;
+  margin-top: 5rem;
+}
+
+#preview-countdown,
+#game-countdown {
+  font-size: 8rem;
+  font-family: "Poiret One";
 }
 
 .character.disabled {
@@ -112,7 +128,7 @@ ul {
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  font-family: 'Poiret One';
+  font-family: "Poiret One";
   font-size: 3rem;
 }
 

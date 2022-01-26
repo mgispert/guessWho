@@ -4,7 +4,7 @@ class Game {
     maxNumOfAttempts = 5,
     numOfCharactersToBeFound = 3,
     previewCountdownSeconds = 10,
-    gameCountdownSeconds = 60,
+    gameCountdownSeconds = 30
   ) {
     this.numOfCharacters = numOfCharacters;
     this.previewCountdownSeconds = previewCountdownSeconds;
@@ -16,14 +16,14 @@ class Game {
     this.numOfCharactersFound = 0;
     this.numAttemptsCount = 0;
     this.gameCountdownInterval = null;
-    this.bodyElement = document.querySelector('body');
+    this.bodyElement = document.querySelector("body");
   }
 
   setup() {
-    const introElement = document.getElementById('intro');
-    const startButtonElement = document.createElement('button');
-    startButtonElement.innerText = 'START';
-    startButtonElement.addEventListener('click', () => {
+    const introElement = document.getElementById("intro");
+    const startButtonElement = document.createElement("button");
+    startButtonElement.innerText = "START";
+    startButtonElement.addEventListener("click", () => {
       this.start();
       introElement?.remove();
     });
@@ -42,7 +42,7 @@ class Game {
     this.numOfCharactersFound = 0;
     this.numAttemptsCount = 0;
     this.previewCountdownSeconds = 10;
-    this.gameCountdownSeconds = 60;
+    this.gameCountdownSeconds = 30;
     this.start();
   }
 
@@ -52,22 +52,22 @@ class Game {
   }
 
   removePreview() {
-    const previewElement = document.getElementById('preview');
-    const countdownElement = document.getElementById('preview-countdown');
+    const previewElement = document.getElementById("preview");
+    const countdownElement = document.getElementById("preview-countdown");
     previewElement?.remove();
     countdownElement?.remove();
   }
 
   removeBoard() {
-    const gameCountdownElement = document.getElementById('game-countdown');
-    const charactersElement = document.getElementById('characters');
+    const gameCountdownElement = document.getElementById("game-countdown");
+    const charactersElement = document.getElementById("characters");
     gameCountdownElement?.remove();
     charactersElement?.remove();
   }
 
   showPreviewCharactersByBot() {
-    const previewElement = document.createElement('div');
-    previewElement.id = 'preview';
+    const previewElement = document.createElement("div");
+    previewElement.id = "preview";
     this.bodyElement.appendChild(previewElement);
 
     this.botSelectedCharacters.forEach((character) => {
@@ -77,8 +77,8 @@ class Game {
   }
 
   showPreviewCountdown() {
-    const countdownElement = document.createElement('div');
-    countdownElement.id = 'preview-countdown';
+    const countdownElement = document.createElement("div");
+    countdownElement.id = "preview-countdown";
     countdownElement.innerHTML = this.previewCountdownSeconds;
     this.bodyElement.appendChild(countdownElement);
     const countdown = setInterval(() => {
@@ -94,8 +94,8 @@ class Game {
   }
 
   showGameCountdown() {
-    const countdownElement = document.createElement('div');
-    countdownElement.id = 'game-countdown';
+    const countdownElement = document.createElement("div");
+    countdownElement.id = "game-countdown";
     countdownElement.innerHTML = this.gameCountdownSeconds;
     this.bodyElement.appendChild(countdownElement);
     this.gameCountdownInterval = setInterval(() => {
@@ -121,16 +121,16 @@ class Game {
   }
 
   displayCharacters() {
-    const charactersElement = document.createElement('div');
-    charactersElement.id = 'characters';
+    const charactersElement = document.createElement("div");
+    charactersElement.id = "characters";
     this.bodyElement.appendChild(charactersElement);
-    charactersElement.innerHTML = '';
+    charactersElement.innerHTML = "";
 
     this.listOfCharacters.forEach((character) => {
       const characterElement = new Character().drawCharacter(character);
-      characterElement.addEventListener('click', () => {
-        const IS_DISABLED = characterElement.classList.contains('disabled');
-        const IS_FOUND = characterElement.classList.contains('found');
+      characterElement.addEventListener("click", () => {
+        const IS_DISABLED = characterElement.classList.contains("disabled");
+        const IS_FOUND = characterElement.classList.contains("found");
 
         // Only call selectCharacterByUser when character hasn't been previously selected
         if (!IS_DISABLED && !IS_FOUND) {
@@ -146,7 +146,7 @@ class Game {
     while (uniqueRandomIndexes.length < this.numOfCharactersToBeFound) {
       // Ex: Random between 0 and (numOfCharactersToBeFound minus 1)
       const random = Math.round(
-        Math.random() * (this.numOfCharacters - 1 - 0) + 0,
+        Math.random() * (this.numOfCharacters - 1 - 0) + 0
       );
       // When random number is not found in uniqueRandomIndexes, push it
       if (uniqueRandomIndexes.indexOf(random) === -1) {
@@ -165,18 +165,18 @@ class Game {
     // Check if characterSelected is equal to one of the botSelectedCharacters
     const CHARACTER_FOUND_INDEX = this.botSelectedCharacters.findIndex(
       (character) =>
-        JSON.stringify(character) === JSON.stringify(characterSelected),
+        JSON.stringify(character) === JSON.stringify(characterSelected)
     );
 
     const CHARACTER_NOT_FOUND = -1;
     // If selected character exists, add class found and increase numOfCharactersFound
     if (CHARACTER_FOUND_INDEX !== CHARACTER_NOT_FOUND) {
-      characterSelectedElement.classList.add('found');
+      characterSelectedElement.classList.add("found");
       this.numOfCharactersFound++;
     } else {
       // If character doesn't exist, increase numAttemptsCount and add a class disabled
       this.numAttemptsCount++;
-      characterSelectedElement.classList.add('disabled');
+      characterSelectedElement.classList.add("disabled");
     }
 
     if (this.numOfCharactersFound === this.numOfCharactersToBeFound) {
@@ -190,14 +190,14 @@ class Game {
 
   showResult(id, message) {
     this.removeBoard();
-    const resultElement = document.createElement('div');
+    const resultElement = document.createElement("div");
     resultElement.id = id;
     resultElement.innerHTML = message;
     this.bodyElement.appendChild(resultElement);
 
-    const startBtnElement = document.createElement('button');
-    startBtnElement.innerText = 'PLAY AGAIN';
-    startBtnElement.addEventListener('click', () => {
+    const startBtnElement = document.createElement("button");
+    startBtnElement.innerText = "PLAY AGAIN";
+    startBtnElement.addEventListener("click", () => {
       this.restart();
       resultElement?.remove();
     });
@@ -205,12 +205,12 @@ class Game {
   }
 
   victory() {
-    this.showResult('victory', 'YOU WON!');
+    this.showResult("victory", "YOU WON!");
   }
 
   loss() {
     clearInterval(this.gameCountdownInterval);
-    this.showResult('loss', 'OH NO, YOU LOST!');
+    this.showResult("loss", "OH NO, YOU LOST!");
   }
 }
 
