@@ -202,10 +202,22 @@ class Game {
     const startBtnElement = document.createElement("button");
     startBtnElement.innerText = "PLAY AGAIN";
     startBtnElement.addEventListener("click", () => {
-      this.restart();
+      let firstLevel = new Game(24);
+      firstLevel.start();
+      // this.restart();
       resultElement?.remove();
     });
     resultElement.appendChild(startBtnElement);
+    if (resultElement.id === "victory") {
+      const nextLevelBtnElement = document.createElement("button");
+      nextLevelBtnElement.innerText = "NEXT LEVEL";
+      nextLevelBtnElement.addEventListener("click", () => {
+        let newLevel = new Game(48);
+        newLevel.start();
+        resultElement?.remove();
+      });
+      resultElement.appendChild(nextLevelBtnElement);
+    }
   }
 
   victory() {
