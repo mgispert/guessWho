@@ -8,7 +8,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  min-width: 300px;
+  min-width: 250px;
 }
 
 button {
@@ -190,6 +190,35 @@ ul {
 
 .character:hover .head {
   animation: bobbleHead 1s infinite;
+}
+
+@media screen and (min-width: 250px) {
+  #characters {
+    grid-template-columns: repeat(1, 150px);
+  }
+  .instructions {
+    margin-right: 25px;
+  }
+  .instructions h1 {
+    font-size: 1rem;
+  }
+
+  ul {
+    font-size: 1rem;
+  }
+
+  #preview-characters {
+    gap: 10px;
+  }
+
+  #preview-countdown {
+    font-size: 6rem;
+  }
+
+  #victory,
+  #loss {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 648px) {
