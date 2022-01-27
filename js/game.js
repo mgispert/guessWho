@@ -37,13 +37,15 @@ class Game {
     this.preview();
   }
 
-  restart() {
+  restart(numOfCharactersToBeFound) {
     this.listOfCharacters = [];
     this.botSelectedCharacters = [];
     this.numOfCharactersFound = 0;
+    this.numOfCharactersToBeFound = numOfCharactersToBeFound;
     this.numAttemptsCount = 0;
     this.previewCountdownSeconds = 10;
     this.gameCountdownSeconds = 30;
+    this.numOfCharacters = 24;
     this.start();
   }
 
@@ -202,18 +204,16 @@ class Game {
     const startBtnElement = document.createElement("button");
     startBtnElement.innerText = "PLAY AGAIN";
     startBtnElement.addEventListener("click", () => {
-      let firstLevel = new Game(24);
-      firstLevel.start();
-      // this.restart();
+      this.restart(3);
       resultElement?.remove();
     });
     resultElement.appendChild(startBtnElement);
+
     if (resultElement.id === "victory") {
       const nextLevelBtnElement = document.createElement("button");
       nextLevelBtnElement.innerText = "NEXT LEVEL";
       nextLevelBtnElement.addEventListener("click", () => {
-        let newLevel = new Game(48);
-        newLevel.start();
+        this.restart(5);
         resultElement?.remove();
       });
       resultElement.appendChild(nextLevelBtnElement);
