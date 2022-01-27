@@ -238,6 +238,10 @@ ul {
     line-height: 3rem;
     font-size: 1.5rem;
   }
+  #victory,
+  #loss {
+    font-size: 2rem;
+  }
 }
 
 @media screen and (min-width: 848px) {
@@ -251,6 +255,10 @@ ul {
   ul {
     line-height: 3rem;
     font-size: 1.5rem;
+  }
+  #victory,
+  #loss {
+    font-size: 3rem;
   }
 }
 
@@ -266,10 +274,19 @@ ul {
     line-height: 3rem;
     font-size: 1.5rem;
   }
+  #victory,
+  #loss {
+    font-size: 3rem;
+  }
 }
 
 @media screen and (min-width: 1140px) {
   #characters {
     grid-template-columns: repeat(6, 150px);
+  }
+
+  #victory,
+  #loss {
+    font-size: 3rem;
   }
 }
