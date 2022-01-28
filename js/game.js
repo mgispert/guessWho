@@ -2,7 +2,7 @@ class Game {
   constructor(
     numOfCharacters = 24,
     maxNumOfAttempts = 5,
-    numOfCharactersToBeFound = 3,
+    numOfCharactersToBeFound = 2,
     previewCountdownSeconds = 10,
     gameCountdownSeconds = 30
   ) {
@@ -38,6 +38,7 @@ class Game {
   }
 
   restart(numOfCharactersToBeFound) {
+    console.log(numOfCharactersToBeFound);
     this.listOfCharacters = [];
     this.botSelectedCharacters = [];
     this.numOfCharactersFound = 0;
@@ -204,7 +205,7 @@ class Game {
     const startBtnElement = document.createElement("button");
     startBtnElement.innerText = "PLAY AGAIN";
     startBtnElement.addEventListener("click", () => {
-      this.restart(3);
+      this.restart(this.numOfCharactersToBeFound);
       resultElement?.remove();
     });
     resultElement.appendChild(startBtnElement);
@@ -213,7 +214,7 @@ class Game {
       const nextLevelBtnElement = document.createElement("button");
       nextLevelBtnElement.innerText = "NEXT LEVEL";
       nextLevelBtnElement.addEventListener("click", () => {
-        this.restart(5);
+        this.restart(this.numOfCharactersToBeFound + 1);
         resultElement?.remove();
       });
       resultElement.appendChild(nextLevelBtnElement);
